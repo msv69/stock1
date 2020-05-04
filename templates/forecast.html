@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<title>Forecast</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--<link href='https://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'> -->
+
+
+<style>
+body,h1 {font-family: "Raleway", Arial, sans-serif}
+h1 {letter-spacing:6px}
+.w3-row-padding img {margin-bottom: 12px}
+
+</STYLE>
+
+
+
+<BODY  bgcolor="#fef4e2">
+	<!-- Page content -->
+	<div class="w3-content" style="max-width:1500px">
+        <div class="w3-row-padding w3-grayscale" style="margin-bottom:20px">
+            <div align="center">
+                <form id='submit_params' method="POST" action="{{url_for('GetForecast')}}">
+                    <label>How many months out into the future?</label>
+                    <BR>
+                    
+                    <select class="selectpicker" name="months_out" style="width:250px;">
+                           <option value=" = {{default_choices}}" selected>{{default_choices}}</option> 
+                    {% for choices1 in ['DJIA','DOW','LB','EXPE','PXD'] %}
+                        <option value="{{choices1}}">{{choices1}}</option>
+                    {% endfor%}
+                    </select>
+                    
+                      <button class="btn btn-default" type="submit">Get Your Forecast</button>  
+
+                </form>
+            </div>
+                <div align="center">
+                    {{forecast_plot}}
+                </div>
+
+                <div align="center">
+                    {{forecast_plot2}}
+                </div>
+        </div>        
+    </div>
+
+	
+<footer class="w3-container w3-center w3-margin-bottom"  id="footer" >
+</footer>
+
+
+</BODY>
+
+
+</HTML>
